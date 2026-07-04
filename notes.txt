@@ -1,0 +1,19 @@
+Aula 1:
+
+o que são sistemas complexos?
+
+R: sistemas constantemente influenciados pelo ambiente onde operam. Ex: Influenciada por como o usuario utiliza, local onde utiliza, influenciadas por passagem de tempo, regulações. 
+
+O que são as leis de Lehman?
+
+R:  são princípios que descrevem a evolução d sistemas complexos. 3 que são importantes são:
+
+1 - Mudança continua
+Um software precisa se adaptar continuamente. Se não se adaptar, sua utilidade e satisfação diminuirão com o tempo, à medida que o ambiente e as necessidades dos usuários evoluem.
+
+2 - Complexidade Crescente
+Com cada alteração em um software, sua complexidade tende a aumentar, a menos que esforços específicos sejam feitos para contrabalançar esse crescimento. Isso pode levar a um aumento nos custos de manutenção e desenvolvimento ao longo do tempo.
+
+
+3 - Qualidade em declinio
+Sem uma manutenção e adaptação rigorosas às mudanças no ambiente operacional, a qualidade do software tende a declinar ao longo do tempo, à medida que as expectativas dos usuários e as demandas do mercado evoluem.
