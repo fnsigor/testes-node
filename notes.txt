@@ -17,3 +17,44 @@ Com cada alteração em um software, sua complexidade tende a aumentar, a menos 
 
 3 - Qualidade em declinio
 Sem uma manutenção e adaptação rigorosas às mudanças no ambiente operacional, a qualidade do software tende a declinar ao longo do tempo, à medida que as expectativas dos usuários e as demandas do mercado evoluem.
+
+
+-------------------------------------------------------------
+
+
+Aula 2
+
+se olhar o package.json, tem uma sessão "imports" que declara caminhos relativos pros imports desejados
+
+essa funciinalidade serve apenas quando se trabalha com ecmascript modules
+
+
+dica: ao encontrar um bug na aplicação durante a criação dos testes, nao ir direto na implementação pra resolver o bug. faça um teste que consiga replicar o problema, pra ter certeza que o bug se trata daquilo. assim que a correção for impplementada e o teste passar, voce terá uma prova concreta de que o problema foi corrigido
+
+//resistencia a refatoração:
+//é um atributo de testes automatizados que diz o quanto o teste continua resistente memso apos mudar o detalhe de implementação
+//ex de detalhes de implementação: mensagens de erro
+
+dica: é sempre bom começar os testes pelos casos de erro. o caso de erro parte de validações feitas no codigo, o codigo nao precisa ser configurado muito pra ter informações extras pq vc ja sabe q vai lançar erro
+
+dica: começar pelos testes mais simples primeiro
+
+dica: no script de teste e2e, colocamos a flag  --test-concurrency=1 garante que so tem 1 processo executando os testes, isso faz com que os testes nao executem em paralelo. Foi necessario pq como os testes compartilham do mesmo banco, um interfere no outro. ex: um teste que depende do banco vazio é afetado por um teste que preenche dados no banco.
+
+dica: separar um banco de dados so pra testes, que é uma copia do banco de dev. isso é necessario pro banco de dev nao ficar poluido. o scrips em docker/init/02-create-test-db.sql cria esse banco. o banco de dev é transformado em um template e o banco de dev é criado conforme esse template. no script de teste e2e, o env-file usa o .env.test. nesse arquivo .env.test tem a url do banco de teste
+
+dica: não criar testes somente a nivel de api, mas tambem a nivel de banco, verificando se os dados do banco sao compativeis com o retorno esperado. 
+
+dica: pra criar dados que vao ser necessarios pro teste, use sempre os endpont da api, nao crie direto no banco. Isso por que, se a api tiver com bug, o teste vai falhar ja no cadastro desses dados. Caso os dados sejam cadastrados direot via banco, esses bug da api podem passar
+
+
+Teste caixa preta: 
+ - se preocupa apenas com a entrada e saida da api.
+ - menor proteção contra regressão (bugs)
+ + resistencia a refatoração (tanto faz os controllers, services, e outros detalhes de implementação)
+
+Teste caixa cinza: 
+ - se preocupa com a entrada e saida da api, mas também com os dados do banco
+ - maior proteção contra regressão 
+ - menor resistencia a refatoração (se a tabela ou colunas mudarem, o teste vai falhar)
+ npm run test:e2e ./**/cadastrar-autor.e2e-spec*
