@@ -1,0 +1,125 @@
+Unidade é uma parte pequena do sistema, leva o nome de System Under Test (SUT)
+
+caracteristicas de testes unitarios
+- rapido
+- facil de ler
+- facil de mudar
+- Proteção limitada (proteção contra regressoes)
+
+testes unitarios nao devem se comunicar com dependencias externas do sistema (banco de dados, filas, arquivos)
+
+--------------------------------------------
+
+O que é uma Unidade?
+
+Vamos pensar num sistema de persmissões de usuario:
+
+O usuario possui um cargo > o cargo possui permissoes atreladas a ele > a ação é permitida ou negada dependendo do cargo
+
+a classe Usuario possui o metodo temPermissao() > esse metodo é herdado de uma subclasse Cargo
+
+----------
+
+Escola Clássica: 
+- a unidade é o conjunto das classes Usuario e Cargo
+  - pq pra responder se o usuario tem permissao, precisa das duas classes
+- a unidade é tudo o que compoe a determinação de um comportamento dentro do sistema
+
+Como fazer testes segundo a escola clássica:
+- o teste seria na classe mais externa do agrupamento de classes, no caso seria a classe usuario
+
+
+-------
+
+Escola de Londres:
+ - a unidade é cada classe, função ou metodo isoladamente de tudo
+ - mesmo que Usuario e Cargo precisem colaborar, cada uma é uma unidade
+
+Como fazer testes segundo a escola de londres:
+  - um teste pra classe Cargo
+  - Um teste pra classe Usuario
+    - nesse teste, como Usuario depende de Cargo, usamos um Mock dessa classe Cargo, pra nao ter dependencia direta
+
+------------------
+
+Resumo escola classica X londres:
+
+                        Uma unidade é       |       Isola
+----------------------------------------------------------------------
+Escola classica   |   uma ou mais classes   |       Unidades             
+Escola de londres |      cada classe        |   Testes unitarios
+
+
+na escola classica, a unidade é composta de uma ou mais classes, metodos ou funções que colaboram pra executar alguma ação. Isola nos testes um conjunto de unidades de sistemas externos, como banco de dados
+Londres: a unidade é uma classe, metodo ou função separadamenre. isola os proprios testes. cada teste de cada unidade é isolado, separado dos outros
+
+
+------------------------------------------------------------------------
+
+dica: pra começar a escrever testes, descrever todos os cenarios que vem a mente como test.todo e só depois começar a implementar  os testes
+
+------------
+
+equal X strictEqual X deepEqual X deepStrictEqual
+
+- equal faz type coersion, é igual ao ==, entao equal(1, '1') retorna true, mesmo que sejam tripos diferentes
+- strictEqual é igual ao ===, verifica tipo e valor
+- deepEqual serve pra objetos. mesmo que 2 objetos tenham o mesmo valor, o equal iria dar erro pq ele compara a referencia na memoria, e 2 objetos na memoria do JS sao diferentes
+- a diferença entre deepEqual e deepStrictEqual é semelhante a de equal e strictEqual, compara valores E tipos. Mas também compara os prototypes do objeto.
+  - se 2 objetos forem iguais, mas um sendo apenas um objeto e outro sendo uma instancia de classe, deepStrictEqual vai falhar
+
+----------
+
+TESTES PARAMETRIZADOS
+- servem pra multiplos testes que tem a mesma estrutura
+- fazer dessa forma evita escrever muitas linhas repetitivas
+
+TESTES DE ERRO
+
+- quando quisermos testar um caso de erro, não é uma boa praticar usar trycatch e fazer asset no erro do catch
+- usa-se o asser.thows
+
+---------------
+
+Velocidade de feedback = rapidez dos resultados dos testes automatizados
+
+
+teste unitarios - faceis de escrever e manter, normalmente nao tem dependencia e nao precisa criar nada externo, sao bem rapidos
+teste e2e - dependencia de conexao com o banco, execuçaõ em serie, precisa do app configurado como um todo, precisa ter dados ja criados
+
+Pilares dos testes automatizados:
+- Proteção contra regressões - o quanto protege contra bug
+- Resistência a refatoração - o quanto  o teste continua passando mesmo quando detalhes na implementação mudam
+- Manutenabilidade - facilidade de ler, manter e alterar o teste - depende da quantidade de dependencias, se tem que criar muita coisa no banco
+- Velocidade de feedback - o quao rapido os testes executam
+
+
+Valor do teste = proteção X resistencia X Manutenabilidade  X Velocidade de feedback
+(cada um dos valores dos pilares vai de 0 a 1, o valor do teste é multiplicado por todos eles)
+o valor do teste é usado pra manter o equilibro entre os pilares. sempre vai ser um tradeoff entre eles, ent nao da pra ter pontuação 1 em todos
+
+-----------------------------------------------------
+
+TESTES E2E 
+
+Pros
+- alta proteção (percorrem o sistem inteiro, captura bugs em todas as camadas)
+- alta resistencia a refatoração (so e preocupa com entrada e saida, nao interessa a implementação)
+
+Cons
+- baixa manutenabilidade (custa pra manter, como banco de teste a configurar, ter q criar dados pra poder testar)
+- baixa Velocidade de feedback 
+
+
+------------
+
+
+TESTES UNITARIOS
+
+Pros
+- alta manutenabilidade (faceis de manter e escrever)
+- alta  Velocidade de feedback  
+
+Cons
+- baixa proteção (testa apenas uma camada, uma pequena parte, nao o todo)
+- baixa resistencia a refatoração (tende a ter que mudar se a implementação muda tbm)

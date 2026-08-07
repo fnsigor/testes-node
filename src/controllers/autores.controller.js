@@ -34,14 +34,14 @@ export class AutoresController {
     }
     const autor = new Autor(body);
     try {
-      const resposta = {
-        id: 1,
-        nome: autor.nome,
-        nacionalidade: autor.nacionalidade,
-        created_at: new Date(),
-        updated_at: new Date(),
-      }
-      // const resposta = await autor.salvar(autor);
+      // const resposta = {
+      //   id: 1,
+      //   nome: autor.nome,
+      //   nacionalidade: autor.nacionalidade,
+      //   created_at: new Date(),
+      //   updated_at: new Date(),
+      // }
+      const resposta = await autor.salvar(autor);
       return res
         .status(201)
         .json({ message: 'autor criado', content: resposta });

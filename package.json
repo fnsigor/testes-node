@@ -11,6 +11,7 @@
     "#controllers/*.js": "./src/controllers/*.js",
     "#db/*.js": "./src/db/*.js",
     "#models/*.js": "./src/models/*.js",
+    "#domain/*.js": "./src/domain/*.js",
     "#routes/*.js": "./src/routes/*.js",
     "#src/*.js": "./src/*.js"
   },
@@ -20,7 +21,8 @@
     "test": "node --test",
     "exec": "node --env-file=.env src/commands/execute.js",
     "test:e2e:all": "node --env-file=.env.test --test --test-concurrency=1 'test/e2e/**/*.e2e-spec.js'",
-    "test:e2e": "node --env-file=.env.test --test --test-concurrency=1"
+    "test:e2e": "node --env-file=.env.test --test --test-concurrency=1",
+    "test:unit:all": "node --env-file=.env.test --test \"test/unit/**/*.spec.js\""
 
   },
   "packageManager": "npm@11.11.0+sha512.f36811c4aae1fde639527368ae44c571d050006a608d67a191f195a801a52637a312d259186254aa3a3799b05335b7390539cf28656d18f0591a1125ba35f973",
