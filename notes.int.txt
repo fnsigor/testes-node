@@ -1,0 +1,3 @@
+o item de interesse do teste (SUT - System Under Test), quando precisa ser testado em conjunto com qualquer outra coisa que dependa de algo externo do processo na memoria, se torna um teste de integração
+exemplos de dependencias externas: apis, banco de daods, arquivos, etc
+quando o teste usa um desses elementos que sao externos, se torna um teste de integração (do ponto de vista da escola classica)
