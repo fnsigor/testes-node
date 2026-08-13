@@ -1,12 +1,15 @@
 import { describe, test, after } from "node:test";
 import request from "supertest";
-import app from "#src/app.js";
 import conexao from "#db/singleton-connection.js";
 
 //pacote nativo do node pra fazer assertions
 import assert from "node:assert";
+import { criarAppTeste } from "../utils/create-test-app.js";
 
 describe('buscar autor', () => {
+
+
+  const app = criarAppTeste()
 
 
   //fechar conexao com o db dps dos testes pra evitra memory leak
@@ -35,8 +38,6 @@ describe('buscar autor', () => {
 
 
     const idAutor = respostaCadastro.body.content.id;
-
-    console.log(respostaCadastro.body.content)
 
     await request(app).get(`/autores/${idAutor}`)
       .expect(200)

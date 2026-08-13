@@ -1,13 +1,14 @@
 import { describe, test, after } from "node:test";
 import request from "supertest";
-import app from "#src/app.js";
 import conexao from "#db/singleton-connection.js";
+import { criarAppTeste } from "../utils/create-test-app.js";
 
 //pacote nativo do node pra fazer assertions
 import assert from "node:assert";
 
 describe('cadastrar autor', () => {
 
+  const app = criarAppTeste()
 
   //fechar conexao com o db dps dos testes pra evitra memory leak
   after(async () => {

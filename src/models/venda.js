@@ -1,4 +1,3 @@
-import { calcularValorVenda } from "#src/domain/calcular-valor-venda.js";
 
 class Venda {
   static db;
@@ -43,7 +42,7 @@ class Venda {
     const dados = {
       id: this.id,
       livro_id: this.idlivro,
-      valor: calcularValorVenda(this.valor, this.modoPagamento),
+      valor: this.valor,
       tipo_pagamento: this.modoPagamento,
       created_at: this.created_at,
       updated_at: this.updated_at,
@@ -55,7 +54,7 @@ class Venda {
   async atualizar(id) {
     const dados = {
       livro_id: this.idlivro,
-      valor: calcularValorVenda(this.valor, this.modoPagamento),
+      valor: this.valor,
       tipo_pagamento: this.modoPagamento,
       created_at: this.created_at,
       updated_at: new Date().toISOString(),

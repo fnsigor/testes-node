@@ -1,0 +1,25 @@
+detalhes de implementação:
+ - classes, funções, bancos de dados:
+    - essas partes de um sistema sao detalhes de implementação
+ - na interação entre esses elementos, não usamos mocks ou stubs. Conseguimos controlar o estado e comportamento desses elementos.
+ - mocks e stubs devem ser usados pra se comunicar com serviços externos, como apis de outros serviços, servidores de email, e outros elementos que nao temos controle.
+
+
+Mock: simula envio de dados pra serviços externos -> simula o que envia
+Stub: substitui dados buscados de serviços externos -> simula o que recbe
+
+
+Test Double: double vem do frances, significa substituto. Sempre que substituimos uma dependencia real estamos usanod um test double.
+
+quando substituimos um comando executado num sistema externo, chammaos de mocks
+qaundo substituimos o retorno dos dados recuperados de um sistema externo, chamamos de stubs
+
+existem subdivisoes dentro de cada test double:
+  Mock: 
+    - mock (ferramenta do nodejs)
+    - spy (quando fizemos um mock manualmente. sem ferramentas/libs)
+
+  Stub
+    - Dummy: qaundo precisa ser criado pra passar como argumento em algum lugar, mas não é usado de fato. o teste de integraçaõ da controllers de livros tem um dummy de uma request express (livros.controller.int-spec.js)
+    - Stub: quando criamos um retorno especifico pra uma dependencia externa. os testes de integração da service de vendas usam stubs (vendas.service.int-spec.js)
+    - Fake: implementação falsa de uma dependencia real. nao tem no projeto, mas tem os exemplos: banco de dados em memoria, fila em memoria. Um faker na pratica é parcido com o EmailGateway, pq simula o envio de email. nesse projeto o EmailGateway não é um fake rpq é pra ser uma dependencia real de produção, nao pra teste.

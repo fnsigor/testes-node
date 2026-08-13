@@ -27,7 +27,7 @@ describe('LivrosController', () => {
       //OBS - precisar saber esses detalhes de implementação pra fazer o teste da controler indica um problema de design
       //um dos pontos que da problema: implementação muda minimamente e os testes quebram
       const livro = await criarLivro()
-      const req = {}
+      const reqDummy = {} //dummy é um tipo de test double que precisa ser criado por ser uma dependencia, mas nao é usado
       const resSpy = {
         status: mock.fn(() => resSpy),
         json: mock.fn(() => resSpy),
@@ -35,7 +35,7 @@ describe('LivrosController', () => {
       }
 
       //act
-      await sut.listarLivros(req, resSpy)
+      await sut.listarLivros(reqDummy, resSpy)
 
 
       //assert

@@ -1,3 +1,11 @@
 o item de interesse do teste (SUT - System Under Test), quando precisa ser testado em conjunto com qualquer outra coisa que dependa de algo externo do processo na memoria, se torna um teste de integração
 exemplos de dependencias externas: apis, banco de daods, arquivos, etc
 quando o teste usa um desses elementos que sao externos, se torna um teste de integração (do ponto de vista da escola classica)
+
+gatewais servem pra chamar serviços externos, como pagamento, envio de email, etc
+
+quando se tem uma dependencia com um sistema externo, como apis, serviços externos, a maneira correta de testar em testes de integração é sempre optar por mocks, verificando os argumentos passados e retorno
+
+quando o mock é pra se comunicar, enviar algo pra um sistema externo, ai temos que verificar como a função foi chamada
+ - mas quando estamos substituindo um retorno de serviço externo, nao precisa verificar como a função é chamada
+ - Mocks que substituem respostas de apis e outros serviços externos sao chamados de Stub, nao de mock 

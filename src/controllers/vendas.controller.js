@@ -1,8 +1,9 @@
 import Venda from '#models/venda.js';
 
 export class VendasController {
-  constructor(databaseConnection) {
+  constructor(databaseConnection, vendaService) {
     Venda.configurarDB(databaseConnection);
+    this.vendaService = vendaService
   }
 
   async registrarVenda(req, res) {
@@ -10,9 +11,9 @@ export class VendasController {
     if (!body.idlivro || !body.modoPagamento || !body.valor) {
       return res.status(400).json({ message: 'Dados inválidos para registro de venda.', type: 'INVALID_DATA' });
     }
-    const venda = new Venda(body);
+
     try {
-      const resposta = await venda.salvar();
+      const resposta = await this.vendaService.registrarVenda(body)
       return res
         .status(201)
         .json({ message: 'venda registrada', content: resposta });

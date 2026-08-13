@@ -18,5 +18,5 @@ export function calcularValorVenda(valor, modoPagamento) {
     throw new Error(`Modo de pagamento inválido: ${modoPagamento}`)
   }
 
-  return Math.round(valor + valor * taxa);
+  return valor + valor * taxa
 }

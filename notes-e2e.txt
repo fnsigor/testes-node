@@ -58,3 +58,14 @@ Teste caixa cinza:
  - maior proteção contra regressão 
  - menor resistencia a refatoração (se a tabela ou colunas mudarem, o teste vai falhar)
  npm run test:e2e ./**/registrar-venda.e2e-spec*
+
+
+ ---------------
+
+nos testes e2e, é necessario subtituir dependencias por mocks ou stubs
+
+- para fazer isso nesse app, refatoramos desde o arquivo principal que roda o app ate a instanciação das controllers, passando as dependencias de serviços externos cmo propriedades.
+- dessa maneira, nos testes e2e, conseguimos mockar as dependencias, para evitar chamadas reais a serviços externos
+- tambem conseguimos utilizar dados dos mocks e stubs de serviços externos quando necessario
+- criamos tambemuma função utilitaria para criar o app pros testes e2e, ja criando os mocks e stubs por padrao
+-   com essa função, podemos passar como argumento os mock e stubs, se necessario (ex: garantir que o serviço foi chamado)
