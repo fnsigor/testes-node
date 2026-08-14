@@ -15,10 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+
+    - name: 'Use Node.js'
       uses: actions/setup-node@v4
       with:
         node-version-file: .node-version
         cache: 'npm'
-    - run: npm ci #comando clean-install: comando do npm que limpa node modules antes do npm i e usa a versao do package.lock pra isntalar dependencia
-    - run: npm run lint
+      run: npm ci #comando clean-install: comando do npm que limpa node modules antes do npm i e usa a versao do package.lock pra isntalar dependencia
+      run: npm run lint
