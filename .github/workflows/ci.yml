@@ -38,5 +38,5 @@ jobs:
         cache: 'npm'
     - run: npm ci  
     - run: env > .env.test
-    - run: npm run teste:unit:all
+    - run: npm run test:unit:all
 
