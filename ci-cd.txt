@@ -21,3 +21,10 @@ a flag cache faz que o lint nao execute se nao tiver mudança de arquvios
 
 
 
+-----------
+
+os scripts de teste dependem do que ta na variavel .env.test
+
+no arquivo ci.yml, o comando "run: env > .env.test" usa o comando linux "env > .env.test"
+- o comando "env > .env.test" cria um clone de .env com o nome .env.test
+
