@@ -28,3 +28,16 @@ os scripts de teste dependem do que ta na variavel .env.test
 no arquivo ci.yml, o comando "run: env > .env.test" usa o comando linux "env > .env.test"
 - o comando "env > .env.test" cria um clone de .env com o nome .env.test
 
+
+----------------
+
+no script de ci, em services onde colocamos os dados do container docker
+
+   options: >-
+          --health-cmd pg_isready - retorna true quando o banco ta pronto p conexoes. demais opções abaixo so executam dps que o banco ta pronto
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+options sao uma serie de configurações que dizem quando um container esta ok
+
