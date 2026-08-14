@@ -1,0 +1,23 @@
+CI - integração continua do codigo nas branches (main, stag, dev)
+CD - entrega continua do sistema nos ambientes. CD tbm é chamado de continuous deployment por isso
+
+
+------------------
+
+npm ci:
+- comando clean-install: comando do npm que pode substituir o npm i. limpa node modules antes do install e usa a versao do package.lock pra instalar dependencia.
+
+    - o package.lock deixa travado a versao, o package.json pode instalar versoes diferentes
+     ex: "nome-lib": "^7.2.2" significa que o `npm i`  pode instalar versoes 7.3.0 ou 7.4, qualquer versao atualizada mantenaod apenas a versao major 7.
+
+o npm ci vai instalar exatamante 7.2.2
+
+
+-----------------
+
+"lint": "eslint --cache" 
+
+a flag cache faz que o lint nao execute se nao tiver mudança de arquvios
+
+
+

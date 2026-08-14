@@ -23,6 +23,7 @@
     "start:watch": "node --env-file=.env --watch src/server.js",
     "test": "node --test",
     "exec": "node --env-file=.env src/commands/execute.js",
+    "lint": "eslint --cache",
     "test:e2e:all": "node --env-file=.env.test --test --test-concurrency=1 'test/e2e/**/*.e2e-spec.js'",
     "test:e2e": "node --env-file=.env.test --test --test-concurrency=1",
     "test:unit:all": "node --env-file=.env.test --test \"test/unit/**/*.spec.js\"",
