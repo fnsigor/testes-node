@@ -41,3 +41,7 @@ no script de ci, em services onde colocamos os dados do container docker
 
 options sao uma serie de configurações que dizem quando um container esta ok
 
+---------------------
+
+no script de ci dos testes unitarios e e2e, é usado o PSQL, ferramenta de cli do postgress, pra preparar as migrations do banco
+
